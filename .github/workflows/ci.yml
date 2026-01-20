@@ -18,6 +18,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7
+        with:
+          root: .
+
       - name: Upload site files
         uses: actions/upload-pages-artifact@v3
         with:

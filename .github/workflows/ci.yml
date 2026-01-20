@@ -1,0 +1,19 @@
+name: Simple CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run simple test
+        run: |
+          echo "CI is working!"
+          ls -la

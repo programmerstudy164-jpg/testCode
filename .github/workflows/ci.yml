@@ -1,4 +1,4 @@
-name: CI + Deploy HTML
+name: CI + HTML Check + Deploy
 
 on:
   push:
@@ -18,10 +18,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Validate HTML
-        uses: Cyb3r-Jak3/html5validator-action@v7
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          root: .
+          node-version: 20
+
+      - name: Install HTML validator
+        run: npm install -g html-validate
+
+      - name: Validate HTML files
+        run: html-validate "**/*.html"
 
       - name: Upload site files
         uses: actions/upload-pages-artifact@v3
